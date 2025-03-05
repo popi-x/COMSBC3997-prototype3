@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7l24du4hxnho"]
+
+[ext_resource type="Script" path="res://scripts/battery.gd" id="1_273q0"]
+[ext_resource type="Texture2D" uid="uid://d35c352r4e6sn" path="res://assets/battery.png" id="1_q52wr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4gpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q52wr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v5ky"]
+size = Vector2(5, 9)
+
+[node name="Battery" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_273q0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.49012e-08, 0)
+scale = Vector2(0.320312, 0.3125)
+sprite_frames = SubResource("SpriteFrames_k4gpc")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0v5ky")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

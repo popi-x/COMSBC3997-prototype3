@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtdj5jyikqccg"]
+
+[ext_resource type="Texture2D" uid="uid://cqws6ul530ogo" path="res://assets/Robots.png" id="1_ap7b5"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_argg6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3jp8"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(0, 320, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oppk0"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(24, 320, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paq6b"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(48, 320, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef5g1"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(72, 320, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x02h"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(168, 320, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vqb4"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(96, 320, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnl8c"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(120, 320, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p728i"]
+atlas = ExtResource("1_ap7b5")
+region = Rect2(144, 320, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qih2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3jp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oppk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paq6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef5g1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x02h")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vqb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnl8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p728i")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fa52"]
+radius = 6.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_argg6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_qih2q")
+animation = &"jump"
+autoplay = "idle"
+frame_progress = 0.593465
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_4fa52")

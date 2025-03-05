@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://3umjaicsibmw"]
+
+[ext_resource type="PackedScene" uid="uid://dtdj5jyikqccg" path="res://scenes/player.tscn" id="1_omoav"]
+[ext_resource type="PackedScene" uid="uid://b7l24du4hxnho" path="res://scenes/battery.tscn" id="2_xvqno"]
+[ext_resource type="PackedScene" uid="uid://ch2wong1xlama" path="res://scenes/killzone.tscn" id="3_mapdx"]
+[ext_resource type="PackedScene" uid="uid://bxlj7j0erww8h" path="res://scenes/enemy.tscn" id="4_g01dk"]
+[ext_resource type="PackedScene" uid="uid://e71km2sduyra" path="res://scenes/platform.tscn" id="5_862nl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_o8cfm"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_omoav")]
+position = Vector2(114, 100)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(116, 88)
+zoom = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(115, 135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_o8cfm")
+
+[node name="Battery" parent="." instance=ExtResource("2_xvqno")]
+position = Vector2(192, 126)
+
+[node name="Killzone" parent="." instance=ExtResource("3_mapdx")]
+
+[node name="Node2D" parent="." instance=ExtResource("4_g01dk")]
+position = Vector2(31, 122)
+
+[node name="Platform" parent="." instance=ExtResource("5_862nl")]
+position = Vector2(192, 99)
