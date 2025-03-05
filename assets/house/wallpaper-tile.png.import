@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2wytorc07kh"
-path="res://.godot/imported/House-bedroom-Sheet.png-296f360da26a095ea2c20d8d65a14b54.ctex"
+uid="uid://bovgedcm508gx"
+path="res://.godot/imported/wallpaper-tile.png-2cf3b0f743ca74dc81ee83b0c26c1e30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/House-bedroom-Sheet.png"
-dest_files=["res://.godot/imported/House-bedroom-Sheet.png-296f360da26a095ea2c20d8d65a14b54.ctex"]
+source_file="res://assets/house/wallpaper-tile.png"
+dest_files=["res://.godot/imported/wallpaper-tile.png-2cf3b0f743ca74dc81ee83b0c26c1e30.ctex"]
 
 [params]
 
