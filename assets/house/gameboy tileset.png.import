@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhqhqxv3hiop4"
-path="res://.godot/imported/battery.png-0291d92f3cb8a965d4b9647e0eab9582.ctex"
+uid="uid://bs1r2evavlu5y"
+path="res://.godot/imported/gameboy tileset.png-13e9c6eee2af8b5517363fd467768835.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/battery.png"
-dest_files=["res://.godot/imported/battery.png-0291d92f3cb8a965d4b9647e0eab9582.ctex"]
+source_file="res://assets/house/gameboy tileset.png"
+dest_files=["res://.godot/imported/gameboy tileset.png-13e9c6eee2af8b5517363fd467768835.ctex"]
 
 [params]
 

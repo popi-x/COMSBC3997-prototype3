@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx8oo4i83kk2d"]
+
+[ext_resource type="Texture2D" uid="uid://bs1r2evavlu5y" path="res://assets/house/gameboy tileset.png" id="1_v1s8c"]
+[ext_resource type="Script" path="res://door.gd" id="1_vtp7i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2n2j1"]
+size = Vector2(13.8027, 20)
+
+[node name="Area2D" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_vtp7i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.53674e-07, 1.90735e-06)
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("1_v1s8c")
+region_enabled = true
+region_rect = Rect2(128, 64, 48, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.0986328, 0)
+shape = SubResource("RectangleShape2D_2n2j1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
