@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://3umjaicsibmw"]
+[gd_scene load_steps=26 format=3 uid="uid://3umjaicsibmw"]
 
 [ext_resource type="PackedScene" uid="uid://dtdj5jyikqccg" path="res://scenes/player.tscn" id="1_omoav"]
 [ext_resource type="PackedScene" uid="uid://b7l24du4hxnho" path="res://scenes/battery.tscn" id="2_xvqno"]
@@ -13,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://0e011jlxv2c5" path="res://assets/house/House-bathroom-Sheet2.png" id="11_vnhn3"]
 [ext_resource type="Texture2D" uid="uid://bl6gojdutn80t" path="res://assets/house/House-bedroom-Sheet.png" id="12_74ni4"]
 [ext_resource type="PackedScene" uid="uid://cx8oo4i83kk2d" path="res://scenes/door.tscn" id="13_eyon3"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="14_x6ymt"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h32iw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn2cm"]
 texture = ExtResource("6_3wuvs")
 margins = Vector2i(1, 1)
 separation = Vector2i(2, 2)
@@ -52,7 +53,7 @@ texture_region_size = Vector2i(30, 30)
 2:7/0 = 0
 3:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upp2y"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ibqt"]
 texture = ExtResource("7_0fypa")
 margins = Vector2i(1, 1)
 separation = Vector2i(2, 2)
@@ -82,7 +83,7 @@ texture_region_size = Vector2i(30, 30)
 2:5/0 = 0
 3:5/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4rp21"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgkgo"]
 texture = ExtResource("8_n0axx")
 margins = Vector2i(1, 1)
 separation = Vector2i(2, 2)
@@ -109,7 +110,7 @@ texture_region_size = Vector2i(30, 30)
 1:6/0 = 0
 2:6/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jrmjg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xpnpc"]
 texture = ExtResource("9_t67ay")
 0:0/0 = 0
 1:0/0 = 0
@@ -256,7 +257,7 @@ texture = ExtResource("9_t67ay")
 5:12/0 = 0
 4:12/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0w2pc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i1vt2"]
 texture = ExtResource("10_nrhfw")
 texture_region_size = Vector2i(32, 32)
 5:0/0 = 0
@@ -379,7 +380,7 @@ texture_region_size = Vector2i(32, 32)
 4:2/next_alternative_id = 4
 4:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xptge"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqwvf"]
 texture = ExtResource("11_vnhn3")
 margins = Vector2i(1, 1)
 separation = Vector2i(2, 2)
@@ -409,7 +410,7 @@ texture_region_size = Vector2i(30, 30)
 2:5/0 = 0
 3:5/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjpeg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghx58"]
 texture = ExtResource("12_74ni4")
 margins = Vector2i(1, 1)
 separation = Vector2i(2, 2)
@@ -442,13 +443,13 @@ texture_region_size = Vector2i(30, 30)
 [sub_resource type="TileSet" id="TileSet_cpwq2"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/7 = SubResource("TileSetAtlasSource_0w2pc")
-sources/8 = SubResource("TileSetAtlasSource_xptge")
-sources/9 = SubResource("TileSetAtlasSource_qjpeg")
-sources/10 = SubResource("TileSetAtlasSource_h32iw")
-sources/11 = SubResource("TileSetAtlasSource_upp2y")
-sources/12 = SubResource("TileSetAtlasSource_4rp21")
-sources/13 = SubResource("TileSetAtlasSource_jrmjg")
+sources/7 = SubResource("TileSetAtlasSource_i1vt2")
+sources/8 = SubResource("TileSetAtlasSource_nqwvf")
+sources/9 = SubResource("TileSetAtlasSource_ghx58")
+sources/10 = SubResource("TileSetAtlasSource_bn2cm")
+sources/11 = SubResource("TileSetAtlasSource_1ibqt")
+sources/12 = SubResource("TileSetAtlasSource_fgkgo")
+sources/13 = SubResource("TileSetAtlasSource_xpnpc")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dksxp"]
 
@@ -544,6 +545,7 @@ shape = SubResource("WorldBoundaryShape2D_sch4p")
 position = Vector2(1877, -83)
 shape = SubResource("WorldBoundaryShape2D_gwsv0")
 
-[node name="Area2D" parent="." instance=ExtResource("13_eyon3")]
+[node name="Door" parent="." instance=ExtResource("13_eyon3")]
 position = Vector2(1612, 95)
 scale = Vector2(3, 3)
+script = ExtResource("14_x6ymt")
