@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://3umjaicsibmw"]
+[gd_scene load_steps=30 format=3 uid="uid://3umjaicsibmw"]
 
 [ext_resource type="Texture2D" uid="uid://bovgedcm508gx" path="res://assets/house/wallpaper-tile.png" id="1_6sqq8"]
 [ext_resource type="PackedScene" uid="uid://dtdj5jyikqccg" path="res://scenes/player.tscn" id="1_omoav"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bl6gojdutn80t" path="res://assets/house/House-bedroom-Sheet.png" id="12_74ni4"]
 [ext_resource type="PackedScene" uid="uid://cx8oo4i83kk2d" path="res://scenes/door.tscn" id="13_eyon3"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="14_x6ymt"]
+[ext_resource type="PackedScene" uid="uid://c23mgxsyj3vhg" path="res://scenes/dust.tscn" id="16_1n5f3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26x6i"]
 texture = ExtResource("1_6sqq8")
@@ -528,7 +529,7 @@ position = Vector2(1463, 127)
 [node name="Batteries" type="Node" parent="."]
 
 [node name="Battery" parent="Batteries" instance=ExtResource("2_xvqno")]
-position = Vector2(223, 151)
+position = Vector2(205, 151)
 
 [node name="Battery2" parent="Batteries" instance=ExtResource("2_xvqno")]
 position = Vector2(100, 203)
@@ -540,7 +541,7 @@ position = Vector2(323, 213)
 position = Vector2(448, 134)
 
 [node name="Battery5" parent="Batteries" instance=ExtResource("2_xvqno")]
-position = Vector2(926, 149)
+position = Vector2(940, 148)
 
 [node name="Battery6" parent="Batteries" instance=ExtResource("2_xvqno")]
 position = Vector2(1359, 149)
@@ -562,3 +563,86 @@ shape = SubResource("WorldBoundaryShape2D_gwsv0")
 position = Vector2(1612, 95)
 scale = Vector2(3, 3)
 script = ExtResource("14_x6ymt")
+
+[node name="Dusts" type="Node" parent="."]
+
+[node name="dust" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(8, 215)
+
+[node name="dust2" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(-64, 215)
+
+[node name="dust3" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(-91, 215)
+
+[node name="dust4" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(-119, 215)
+
+[node name="dust5" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(116, 121)
+
+[node name="dust6" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(225, 152)
+
+[node name="dust7" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(244, 152)
+
+[node name="dust8" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(304, 119)
+
+[node name="dust9" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(329, 119)
+
+[node name="dust10" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(279, 215)
+
+[node name="dust11" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(303, 215)
+
+[node name="dust12" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(421, 197)
+
+[node name="dust13" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(527, 190)
+
+[node name="dust14" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(592, 152)
+
+[node name="dust15" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(543, 86)
+
+[node name="dust16" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(568, 85)
+
+[node name="dust17" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(631, 53)
+
+[node name="dust18" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(977, 87)
+
+[node name="dust23" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(1006, 87)
+
+[node name="dust24" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(1269, 212)
+
+[node name="dust25" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(1297, 211)
+
+[node name="dust26" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(1393, 124)
+
+[node name="dust27" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(1421, 124)
+
+[node name="dust19" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(818, 184)
+
+[node name="dust22" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(1038, 185)
+
+[node name="dust21" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(907, 150)
+
+[node name="dust20" parent="Dusts" instance=ExtResource("16_1n5f3")]
+position = Vector2(924, 184)
