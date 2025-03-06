@@ -3,12 +3,14 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -240.0
-const MAX_JUMPS = 2
+
+var max_jumps = 1
 var jump_count = 0
-var battery_count = 0
-var can_double_jump: bool = false
+
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var game_manager: Node = %GameManager
+
 
 func _physics_process(delta: float) -> void:
 	update_jump_ability()
@@ -19,13 +21,11 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if is_on_floor():
 		jump_count = 0
-		can_double_jump = battery_count > 0
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	if Input.is_action_just_pressed("jump") and jump_count < MAX_JUMPS and can_double_jump and not is_on_floor():
+	if Input.is_action_just_pressed("jump") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
-		battery_count -= 1
+		if jump_count == 2:
+			game_manager.modify_battery(-1)
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func update_jump_ability():
-	if battery_count > 0:
-		can_double_jump = true
+	if game_manager.battery_count > 0:
+		max_jumps = 2
 	else:
-		can_double_jump = false
+		max_jumps = 1

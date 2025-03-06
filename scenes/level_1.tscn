@@ -1,7 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://3umjaicsibmw"]
+[gd_scene load_steps=32 format=3 uid="uid://3umjaicsibmw"]
 
+[ext_resource type="FontFile" uid="uid://cqu1lrccnm6tl" path="res://assets/fonts/monogram.ttf" id="1_0mbyt"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_48aa0"]
 [ext_resource type="PackedScene" uid="uid://dtdj5jyikqccg" path="res://scenes/player.tscn" id="1_omoav"]
+[ext_resource type="Texture2D" uid="uid://crbkrfvlynsyc" path="res://assets/battery-sprite.png" id="2_2av8h"]
 [ext_resource type="Texture2D" uid="uid://d0611i5884rey" path="res://assets/house/pixil-frame-0.png" id="2_h750a"]
 [ext_resource type="PackedScene" uid="uid://b7l24du4hxnho" path="res://scenes/battery.tscn" id="2_xvqno"]
 [ext_resource type="PackedScene" uid="uid://ch2wong1xlama" path="res://scenes/killzone.tscn" id="3_mapdx"]
@@ -16,6 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://cx8oo4i83kk2d" path="res://scenes/door.tscn" id="13_eyon3"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="14_x6ymt"]
 [ext_resource type="PackedScene" uid="uid://c23mgxsyj3vhg" path="res://scenes/dust.tscn" id="16_1n5f3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi6bb"]
+atlas = ExtResource("2_2av8h")
+region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2yjmm"]
 texture = ExtResource("2_h750a")
@@ -471,6 +477,45 @@ distance = 20.0
 
 [node name="Level1" type="Node2D"]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -123.0
+offset_top = 16.0
+offset_right = -27.0
+offset_bottom = 42.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0.749434, 0, 1)
+theme_override_fonts/font = ExtResource("1_0mbyt")
+theme_override_font_sizes/font_size = 60
+text = "Score: 0"
+
+[node name="BatteryCounter" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -153.0
+offset_top = 59.0
+offset_right = 14.0
+offset_bottom = 137.0
+grow_horizontal = 0
+
+[node name="BatteryIcon" type="TextureRect" parent="CanvasLayer/BatteryCounter"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_fi6bb")
+stretch_mode = 6
+
+[node name="BatteryNum" type="Label" parent="CanvasLayer/BatteryCounter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.74902, 0, 1)
+theme_override_fonts/font = ExtResource("1_0mbyt")
+theme_override_font_sizes/font_size = 60
+text = " x 0"
+
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_48aa0")
@@ -486,7 +531,7 @@ layer_2/name = "bed"
 layer_2/tile_data = PackedInt32Array(393218, 655367, 268435457, 393219, 589831, 268435457, 458754, 655367, 268435458, 458755, 589831, 268435458)
 
 [node name="Player" parent="." instance=ExtResource("1_omoav")]
-position = Vector2(-30, 214)
+position = Vector2(1348, 151)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -3)
