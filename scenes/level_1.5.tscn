@@ -1,0 +1,160 @@
+[gd_scene load_steps=18 format=3 uid="uid://dqhahatd08un0"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_jfphf"]
+[ext_resource type="FontFile" uid="uid://cqu1lrccnm6tl" path="res://assets/fonts/monogram.ttf" id="2_akeb5"]
+[ext_resource type="Script" path="res://scripts/dialogue_box.gd" id="2_l1fhl"]
+[ext_resource type="Script" path="res://scripts/door1_5.gd" id="7_uh3hk"]
+[ext_resource type="PackedScene" uid="uid://dtdj5jyikqccg" path="res://scenes/player.tscn" id="8_0wd86"]
+[ext_resource type="PackedScene" uid="uid://dc5dwl61yr6k0" path="res://scenes/wizard.tscn" id="8_i6oua"]
+[ext_resource type="PackedScene" uid="uid://ch2wong1xlama" path="res://scenes/killzone.tscn" id="9_d6i7r"]
+[ext_resource type="Texture2D" uid="uid://d35hcs73e8gj6" path="res://assets/cavern_tiles/tiles.png" id="9_xfb4a"]
+[ext_resource type="PackedScene" uid="uid://cx8oo4i83kk2d" path="res://scenes/door.tscn" id="10_fyd4g"]
+[ext_resource type="Texture2D" uid="uid://d05y7if5t2vnh" path="res://assets/cavern_tiles/background.png" id="10_tc8hn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blkvu"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="TileSet" id="TileSet_mx5ba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05h2c"]
+size = Vector2(46, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcmnc"]
+size = Vector2(299, 101)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0yg1b"]
+normal = Vector2(0.999968, 0.00796787)
+distance = -113.69
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7i3c4"]
+normal = Vector2(-0.999975, -0.00704208)
+distance = -55.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8l8t"]
+size = Vector2(137, 20)
+
+[node name="Level1_5" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_jfphf")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="CanvasLayer2"]
+z_index = 8
+offset_left = 396.0
+offset_top = 318.0
+offset_right = 1261.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_blkvu")
+script = ExtResource("2_l1fhl")
+
+[node name="DialogueText" type="RichTextLabel" parent="CanvasLayer2/DialogueBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 2.0
+offset_right = 14.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_akeb5")
+theme_override_font_sizes/normal_font_size = 70
+text = "Take me from a window, leave a grieving wife. Stick me in a door, save a life. What am I?"
+
+[node name="PlayerTalkInput" type="TextEdit" parent="CanvasLayer2/DialogueBox"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 174.0
+offset_right = 700.0
+offset_bottom = 235.0
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_akeb5")
+theme_override_font_sizes/font_size = 70
+placeholder_text = "Answer riddle..."
+
+[node name="TalkButton" type="Button" parent="CanvasLayer2/DialogueBox"]
+layout_mode = 0
+offset_left = 710.0
+offset_top = 173.0
+offset_right = 849.0
+offset_bottom = 237.0
+theme_override_fonts/font = ExtResource("2_akeb5")
+theme_override_font_sizes/font_size = 70
+text = "Enter"
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(6, 0)
+tile_set = SubResource("TileSet_mx5ba")
+format = 2
+layer_0/name = "background"
+layer_1/name = "Mid"
+layer_1/tile_data = PackedInt32Array(-720898, 65543, 5, -720897, 131079, 5, -786432, 196615, 5)
+layer_2/name = "bed"
+
+[node name="Player" parent="." instance=ExtResource("8_0wd86")]
+position = Vector2(-92, 226)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(1, -9)
+zoom = Vector2(6, 6)
+limit_left = -148
+limit_right = 320
+limit_bottom = 380
+position_smoothing_enabled = true
+
+[node name="Killzone" parent="." instance=ExtResource("9_d6i7r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(97, 203)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_05h2c")
+
+[node name="Door" parent="." instance=ExtResource("10_fyd4g")]
+position = Vector2(285, 312)
+scale = Vector2(2, 2)
+script = ExtResource("7_uh3hk")
+
+[node name="Wizard" parent="." instance=ExtResource("8_i6oua")]
+position = Vector2(135, 229)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -235.0
+offset_top = 65.0
+offset_right = 325.0
+offset_bottom = 387.0
+texture = ExtResource("9_xfb4a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(36.5, 276.5)
+shape = SubResource("RectangleShape2D_rcmnc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_0yg1b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(271, 275)
+shape = SubResource("WorldBoundaryShape2D_7i3c4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(251, 344)
+shape = SubResource("RectangleShape2D_d8l8t")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -2
+offset_left = -288.0
+offset_top = -14.0
+offset_right = 344.0
+offset_bottom = 360.0
+texture = ExtResource("10_tc8hn")
+
+[connection signal="pressed" from="CanvasLayer2/DialogueBox/TalkButton" to="CanvasLayer2/DialogueBox" method="_on_talk_button_pressed"]
+[connection signal="body_entered" from="Door" to="Player" method="_on_door_body_entered"]
