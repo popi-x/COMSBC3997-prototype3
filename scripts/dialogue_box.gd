@@ -4,7 +4,8 @@ extends Panel
 @onready var talk_input : TextEdit = get_node("PlayerTalkInput")
 @onready var talk_button : Button = get_node("TalkButton")
 var inRiddle = false
-var intro = true
+var intro1 = true
+var intro2 = false
 var riddle = 0
 var dead = false
 var passMessage = false
@@ -22,18 +23,27 @@ func initialize_with_npc (npc):
 	
 
 func _ready() -> void:
+	talk_input.visible = false
 	visible = false
 
 func _on_talk_button_pressed() -> void:
-	if(intro):
+	if(intro1):
+		intro1 = false
+		intro2 = true
+		_on_npc_talk("Answer my riddles three and pass. Fail and die.")
+	elif(intro2):
+		intro2 = false
+		talk_input.visible = true
 		_on_npc_talk("Take me from a window, leave a grieving wife. Stick me in a door, save a life. What am I?")
-	if (passMessage):
+	elif (passMessage):
 		passMessage = false
 		talk_input.visible = true
 		if(passed):
 			if (riddle == 1):
+				passed = false
 				_on_npc_talk("Rich people need it. Poor people have it. If you eat it, you die.")
 			if (riddle == 2):
+				passed = false
 				_on_npc_talk("Which word in the dictionary is spelled incorrectly?")
 			if(riddle == 3):
 				visible = false
@@ -60,6 +70,19 @@ func _on_player_talk():
 	
 func _on_npc_response(userInput):
 	#todo: determine if user input is correct 
+	if(userInput == "you are cunty wizard"):
+		passMessage = true
+		passed = true
+		riddle = 3
+		return("Purrrrrrr you can pass!")
+	if("ai" in userInput.to_lower().split(" ")):
+		attack_and_die()
+		passMessage = true
+		return("You think being controlled by a real player makes you more privileged than me??!!! DIE!!!")
+	if(userInput.to_lower() in nonos):
+		attack_and_die()
+		passMessage = true
+		return("You said a bad thing. Prepare to die!")
 	if(riddle == 0):
 		if(" n " in userInput.to_lower() or "n" in userInput.to_lower().split(" ")):
 			passed = true
@@ -78,11 +101,13 @@ func _on_npc_response(userInput):
 		riddle += 1
 		return("You have passed my final riddle! You may proceed.")
 		
+	attack_and_die()
+	return("You have failed my riddle! Prepare to die.")
+	
+func attack_and_die():
 	%Wizard.get_node("AnimatedSprite2D").animation = "attack"
 	%riddleCollision.disabled = true
 	dead = true
-	return("You have failed my riddle! Prepare to die.")
-	
 func _on_npc_talk (npc_dialogue):
 	if(dead && !passMessage):
 		#todo: add timer to give reader time to read
