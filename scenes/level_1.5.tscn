@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dqhahatd08un0"]
+[gd_scene load_steps=19 format=3 uid="uid://dqhahatd08un0"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_jfphf"]
 [ext_resource type="FontFile" uid="uid://cqu1lrccnm6tl" path="res://assets/fonts/monogram.ttf" id="2_akeb5"]
 [ext_resource type="Script" path="res://scripts/dialogue_box.gd" id="2_l1fhl"]
+[ext_resource type="Script" path="res://scripts/riddleCollideZone.gd" id="6_4qx0a"]
 [ext_resource type="Script" path="res://scripts/door1_5.gd" id="7_uh3hk"]
 [ext_resource type="PackedScene" uid="uid://dtdj5jyikqccg" path="res://scenes/player.tscn" id="8_0wd86"]
 [ext_resource type="PackedScene" uid="uid://dc5dwl61yr6k0" path="res://scenes/wizard.tscn" id="8_i6oua"]
@@ -65,7 +66,7 @@ grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_akeb5")
 theme_override_font_sizes/normal_font_size = 70
-text = "Take me from a window, leave a grieving wife. Stick me in a door, save a life. What am I?"
+text = "Hello! I am the Wizard."
 
 [node name="PlayerTalkInput" type="TextEdit" parent="CanvasLayer2/DialogueBox"]
 layout_mode = 0
@@ -89,6 +90,10 @@ theme_override_fonts/font = ExtResource("2_akeb5")
 theme_override_font_sizes/font_size = 70
 text = "Enter"
 
+[node name="Timer" type="Timer" parent="CanvasLayer2/DialogueBox"]
+wait_time = 0.6
+one_shot = true
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(6, 0)
 tile_set = SubResource("TileSet_mx5ba")
@@ -99,6 +104,7 @@ layer_1/tile_data = PackedInt32Array(-720898, 65543, 5, -720897, 131079, 5, -786
 layer_2/name = "bed"
 
 [node name="Player" parent="." instance=ExtResource("8_0wd86")]
+unique_name_in_owner = true
 position = Vector2(-92, 226)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -109,9 +115,10 @@ limit_right = 320
 limit_bottom = 380
 position_smoothing_enabled = true
 
-[node name="Killzone" parent="." instance=ExtResource("9_d6i7r")]
+[node name="riddleCollideZone" parent="." instance=ExtResource("9_d6i7r")]
+script = ExtResource("6_4qx0a")
 
-[node name="riddleCollision" type="CollisionShape2D" parent="Killzone"]
+[node name="riddleCollision" type="CollisionShape2D" parent="riddleCollideZone"]
 unique_name_in_owner = true
 position = Vector2(97, 203)
 rotation = -1.5708
@@ -136,7 +143,8 @@ texture = ExtResource("9_xfb4a")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="RiddleFloor" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
 position = Vector2(36.5, 276.5)
 shape = SubResource("RectangleShape2D_rcmnc")
 
