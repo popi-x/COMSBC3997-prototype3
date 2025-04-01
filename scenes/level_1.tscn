@@ -25,7 +25,6 @@ texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_da7tq"]
-load_path = "res://.godot/imported/House-kitchen-Sheet2.png-9a157332b23679c9e0eb315f63fcecc2.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bn2cm"]
 texture = SubResource("CompressedTexture2D_da7tq")
@@ -66,7 +65,6 @@ texture_region_size = Vector2i(30, 30)
 3:7/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f8ugv"]
-load_path = "res://.godot/imported/House-living room-Sheet.png-5689d44fba299b7d386624618cbdef0a.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ibqt"]
 texture = SubResource("CompressedTexture2D_f8ugv")
@@ -99,7 +97,6 @@ texture_region_size = Vector2i(30, 30)
 3:5/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uksdg"]
-load_path = "res://.godot/imported/House-tileset-Sheet.png-01fed1c3cb88e0b790b1bdfe5fc7bb9a.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fgkgo"]
 texture = SubResource("CompressedTexture2D_uksdg")
@@ -399,7 +396,6 @@ texture_region_size = Vector2i(32, 32)
 4:2/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_quqm5"]
-load_path = "res://.godot/imported/House-bathroom-Sheet2.png-daee4335f8d1c25fe1570469bb3f918b.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqwvf"]
 texture = SubResource("CompressedTexture2D_quqm5")
@@ -432,7 +428,6 @@ texture_region_size = Vector2i(30, 30)
 3:5/0 = 0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_skdas"]
-load_path = "res://.godot/imported/House-bedroom-Sheet.png-db555fa63c73e78d9ebc232acda4b556.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghx58"]
 texture = SubResource("CompressedTexture2D_skdas")
