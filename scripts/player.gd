@@ -13,11 +13,13 @@ var jump_count = 0
 
 
 func _physics_process(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		
 	if(!(get_tree().get_current_scene().name == "Level1_5" and %DialogueBox.inRiddle)):
 		update_jump_ability()
 		# Add the gravity.
-		if not is_on_floor():
-			velocity += get_gravity() * delta
+		
 
 		# Handle jump.
 		if is_on_floor():
@@ -55,8 +57,11 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+	else:
+		velocity.x = 0
 
-		move_and_slide()
+	move_and_slide()
 	
 func update_jump_ability():
 	if game_manager.battery_count > 0:

@@ -3,6 +3,10 @@ extends Panel
 @onready var dialogue_text : RichTextLabel = get_node("DialogueText")
 @onready var talk_input : TextEdit = get_node("PlayerTalkInput")
 @onready var talk_button : Button = get_node("TalkButton")
+@onready var player: CharacterBody2D = %Player
+@onready var timer: Timer = $Timer
+
+
 var inRiddle = false
 var intro1 = true
 var intro2 = false
@@ -107,16 +111,25 @@ func _on_npc_response(userInput):
 func attack_and_die():
 	%Wizard.get_node("AnimatedSprite2D").animation = "attack"
 	%riddleCollision.disabled = true
+	Engine.time_scale = 0.5
+	player.get_node("CollisionShape2D").disabled = true
+	player.get_node("CollisionShape2D").queue_free()
+	timer.start()
+	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
 	dead = true
+	
+	
 func _on_npc_talk (npc_dialogue):
 	if(dead && !passMessage):
-		#todo: add timer to give reader time to read
-		#trigger fire animation and death 
 		visible = false
-		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("res://scenes/level_1.tscn")
 		return
 	dialogue_text.text = npc_dialogue
 	talk_button.disabled = false
 	if(passMessage):
 		talk_input.visible = false
+
+
+func _on_timer_timeout() -> void:
+	Engine.time_scale = 1.0
+	#get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+	

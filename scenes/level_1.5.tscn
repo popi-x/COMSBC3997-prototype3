@@ -169,4 +169,5 @@ texture = ExtResource("10_tc8hn")
 
 [connection signal="ready" from="CanvasLayer2/DialogueBox" to="GameManager" method="_on_dialogue_box_ready"]
 [connection signal="pressed" from="CanvasLayer2/DialogueBox/TalkButton" to="CanvasLayer2/DialogueBox" method="_on_talk_button_pressed"]
+[connection signal="timeout" from="CanvasLayer2/DialogueBox/Timer" to="CanvasLayer2/DialogueBox" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Door" to="Player" method="_on_door_body_entered"]
